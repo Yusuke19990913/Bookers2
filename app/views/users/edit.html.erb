@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>User info</h2>
+<% if @user.errors.any? %>
+ <div>
+ <h2> <%= @user.errors.count %>errors prohibited this book from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+<%= form_with model: @user do |f| %>
+
+  <label for="inputName">Name</label>
+  <p><%= f.text_field :name, autofocus: true, id:"inputName"%></p>
+  <label for="inputImage">Image</label>
+  <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
+  <label for="inputIntroduction">Introduction</label>
+  <p><%= f.text_area :introduction, autofocus: true, id:"introduction"%></p>
+  <p>
+  <%= f.submit "Update User" %>
+  </p>
+<% end %>
+</div>
+</div>
