@@ -33,12 +33,14 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book=Book.new
+    @post_comment = PostComment.new
   end
 
   def show
     @book=Book.find(params[:id])
     @bookNew =Book.new
     @books = Book.all
+    @book_comment = BookComment.new
   end
 
   def destroy
